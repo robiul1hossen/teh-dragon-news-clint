@@ -5,7 +5,7 @@ import { AuthContext } from "../../../Providers/AuthProviders";
 
 const Login = () => {
   const location = useLocation();
-  const from = location.state.from?.pathname || "/category/0";
+  const from = location.state?.from?.pathname || "/category/0";
 
   const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -20,7 +20,6 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
         navigate(from);
       })
       .catch((error) => {
